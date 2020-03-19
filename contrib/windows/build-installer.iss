@@ -86,6 +86,7 @@ Name: "startmenu"; Description: "Create a Start Menu entry"
 
 [Files]
 Source: "{#SourceDir}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "{#RepoDir}\contrib\windows\julia.cmd"; DestDir: "{app}\cmd";
 
 
 [Icons]
