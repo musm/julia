@@ -179,6 +179,9 @@ function mkdir(path::AbstractString; mode::Integer = 0o777)
             uv_error("mkdir($(repr(path)); mode=0o$(string(mode,base=8)))", ret)
         end
         uv_fs_req_cleanup(req)
+        # mode argument is a no-op in uv_fs_mkdir, so do it here
+        # TODO: remove if libuv ever implements it
+        Sys.iswindows() && chmod(path, mode)
         return path
     finally
         Libc.free(req)
